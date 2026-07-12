@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Payment</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+}
+
+.container{
+
+width:450px;
+margin:60px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+text-align:center;
+margin-bottom:30px;
+
+}
+
+.option{
+
+padding:15px;
+margin:15px 0;
+border:1px solid #ddd;
+border-radius:10px;
+
+}
+
+.option:hover{
+
+background:#f8f8f8;
+
+}
+
+button{
+
+width:100%;
+padding:15px;
+background:#28a745;
+color:white;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#218838;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Select Payment</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="option">
+        <input type="radio" name="method" value="cod" required>
+        Cash On Delivery
+    </div>
+
+    <div class="option">
+        <input type="radio" name="method" value="upi">
+        UPI Payment
+    </div>
+
+    <div class="option">
+        <input type="radio" name="method" value="card">
+        Debit / Credit Card
+        <br>
+        <small style="color:gray;">Coming Soon</small>
+    </div>
+
+    <button type="submit">
+        Continue
+    </button>
+
+</form>

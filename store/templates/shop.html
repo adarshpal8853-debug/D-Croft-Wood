@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>D Croft Wood Shop</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f7f5f2;
+}
+
+
+/* Header */
+
+.header{
+
+background:white;
+
+padding:20px 50px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+flex-wrap:wrap;
+
+box-shadow:0 2px 15px rgba(0,0,0,.1);
+
+}
+
+.logo a{
+
+text-decoration:none;
+
+font-size:30px;
+font-weight:bold;
+
+color:#6b4e35;
+
+}
+
+.search-box form{
+
+display:flex;
+
+}
+
+.search-box input{
+
+width:300px;
+
+padding:12px;
+
+border:none;
+outline:none;
+
+background:#f1f1f1;
+
+border-radius:30px 0px 0px 30px;
+
+}
+
+.search-box button{
+
+padding:12px 18px;
+
+border:none;
+
+background:#b9804f;
+
+color:white;
+
+cursor:pointer;
+
+border-radius:0px 30px 30px 0px;
+
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+margin-left:20px;
+
+font-size:17px;
+
+color:#444;
+
+font-weight:500;
+
+}
+
+.nav-links a:hover{
+
+color:#b9804f;
+
+}
+
+
+/* Hero */
+
+.hero{
+
+padding:60px;
+
+text-align:center;
+
+background:#1f1a17;
+
+color:white;
+
+}
+
+.hero h1{
+
+font-size:45px;
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+}
+
+
+/* Product Section */
+
+.container{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+padding:50px;
+
+}
+
+.card{
+
+background:white;
+
+padding:15px;
+
+border-radius:20px;
+
+box-shadow:
+0px 5px 15px rgba(0,0,0,.1);
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card img{
+
+width:100%;
+height:250px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+}
+
+.card h3{
+
+margin:15px 0;
+
+font-size:22px;
+
+}
+
+.price{
+
+font-size:25px;
+
+font-weight:bold;
+
+color:#1aa426;
+
+margin-bottom:10px;
+
+}
+
+.desc{
+
+color:#666;
+
+margin-bottom:15px;
+
+line-height:25px;
+
+}
+
+
+.btn{
+
+border:none;
+
+padding:12px;
+
+width:100%;
+
+margin-top:10px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:15px;
+font-weight:bold;
+
+color:white;
+
+}
+
+.detail-btn{
+
+background:#444;
+
+}
+
+.cart-btn{
+
+background:#b9804f;
+
+}
+
+.wishlist-btn{
+
+background:#ff4d88;
+
+}
+
+.btn:hover{
+
+opacity:.85;
+
+}
+
+
+
+@media(max-width:768px){
+
+.header{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+.search-box input{
+
+width:220px;
+
+}
+
+.hero h1{
+
+font-size:35px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+
+<a href="{% url 'home' %}">
+
+D Croft Wood
+
+</a>
+
+</div>
+
+
+<div class="search-box">
+
+<form method="GET">
+
+<input
+type="text"
+placeholder="Search Furniture..."
+name="q">
+
+<button>
+
+🔍
+
+</button>
+
+</form>
+
+</div>
+
+
+<div class="nav-links">
+
+<a href="{% url 'home' %}">
+🏠 Home
+</a>
+
+<a href="{% url 'shop' %}">
+🛍 Shop
+</a>
+
+<a href="{% url 'cart' %}">
+🛒 Cart
+</a>
+<a href="{% url 'my_orders' %}">
+📦 Orders
+</a>
+
+
+<a href="{% url 'wishlist' %}">
+❤️ Wishlist
+</a>
+
+</div>
+
+</header>
+
+
+<div class="hero">
+
+<h1>
+
+Premium Furniture Collection
+
+</h1>
+
+<p>
+
+Explore our luxury furniture collection
+
+</p>
+
+</div>
+
+
+
+<div class="container">
+
+{% for product in products %}
+
+<div class="card">
+
+<img src="{{product.image.url}}">
+
+<h3>
+
+{{product.name}}
+
+</h3>
+
+<p class="price">
+
+₹{{product.price}}
+
+</p>
+
+<p class="desc">
+
+{{product.description|truncatewords:10}}
+
+</p>
+
+
+<a href="{% url 'product_detail' product.id %}">
+
+<button class="btn detail-btn">
+
+View Details
+
+</button>
+
+</a>
+
+
+<a href="{% url 'add_to_cart' product.id %}">
+
+<button class="btn cart-btn">
+
+🛒 Add To Cart
+
+</button>
+
+</a>
+
+
+<a href="{% url 'add_to_wishlist' product.id %}">
+
+<button class="btn wishlist-btn">
+
+❤️ Wishlist
+
+</button>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

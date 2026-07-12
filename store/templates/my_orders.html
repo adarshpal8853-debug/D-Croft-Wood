@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Orders</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.order-container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.order-card{
+    width:80%;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.order-card h2{
+    color:#007bff;
+}
+
+.info{
+    margin:8px 0;
+}
+
+.price{
+    color:green;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.status{
+    display:inline-block;
+    background:orange;
+    color:white;
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+.home-btn{
+    display:block;
+    width:150px;
+    text-align:center;
+    margin:30px auto;
+    padding:12px;
+    text-decoration:none;
+    background:#007bff;
+    color:white;
+    border-radius:10px;
+}
+
+.home-btn:hover{
+    background:#0056b3;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📦 My Orders</h1>
+
+<div class="order-container">
+
+{% for order in orders %}
+
+<div class="order-card">
+
+<h2>Order #{{order.id}}</h2>
+
+<p class="info">
+<strong>Name:</strong>
+{{order.name}}
+</p>
+
+<p class="info">
+<strong>Phone:</strong>
+{{order.phone}}                  \
+</p>
+
+<p class="info">
+<strong>Products:</strong>
+{{order.product}}
+</p>
+
+<p class="info">
+<strong>Address:</strong>
+{{order.address}}
+</p>
+
+<p class="price">
+
+₹{{order.total_price}}
+
+</p>
+
+<p>
+
+<span class="status">
+
+Pending
+
+</span>
+
+</p>
+
+</div>
+
+{% empty %}
+
+<h2 style="text-align:center;">
+No Orders Found
+</h2>
+
+{% endfor %}
+
+</div>
+
+<a href="/" class="home-btn">
+
+🏠 Back Home
+
+</a>
+
+</body>
+</html>
