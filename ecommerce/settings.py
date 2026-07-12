@@ -1,7 +1,9 @@
 from pathlib import Path
+import os
 
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Security
 SECRET_KEY = 'django-insecure-key'
@@ -9,10 +11,11 @@ SECRET_KEY = 'django-insecure-key'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "localhost",
     "127.0.0.1",
+    "localhost",
     ".onrender.com",
 ]
+
 
 # Installed Apps
 INSTALLED_APPS = [
@@ -26,24 +29,35 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+
     'django.middleware.common.CommonMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'ecommerce.urls'
+
 
 # Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
         'DIRS': [],
+
         'APP_DIRS': True,
 
         'OPTIONS': {
@@ -62,7 +76,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
+
 
 # Database
 DATABASES = {
@@ -71,6 +87,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# Password Validation
+AUTH_PASSWORD_VALIDATORS = []
+
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -81,17 +102,28 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# ===========================
 # Static Files
-STATIC_URL = 'static/'
+# ===========================
 
-import os
+STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [
+    BASE_DIR / "store/static",
+]
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+# ===========================
 # Media Files
-MEDIA_URL = '/media/'
+# ===========================
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+
 
 # Default Primary Key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
