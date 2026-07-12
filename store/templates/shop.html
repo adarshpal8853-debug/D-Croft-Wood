@@ -6,285 +6,727 @@
 <title>D Croft Wood Shop</title>
 
 <style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-background:#f7f5f2;
+    background:#f7f5f2;
+    color:#333;
 }
 
-
-/* Header */
+/* ===========================
+        HEADER
+=========================== */
 
 .header{
+    position:sticky;
+    top:0;
+    z-index:1000;
 
-background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
 
-padding:20px 50px;
+    padding:18px 70px;
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+    background:#ffffff;
 
-flex-wrap:wrap;
-
-box-shadow:0 2px 15px rgba(0,0,0,.1);
-
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .logo a{
 
-text-decoration:none;
+    text-decoration:none;
 
-font-size:30px;
-font-weight:bold;
+    font-size:38px;
 
-color:#6b4e35;
+    font-weight:800;
+
+    color:#6B3E1F;
+
+    letter-spacing:1px;
+
+}
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
 
 }
 
 .search-box form{
 
-display:flex;
+    display:flex;
+
+    width:100%;
+    max-width:520px;
 
 }
 
 .search-box input{
 
-width:300px;
+    flex:1;
 
-padding:12px;
+    padding:14px 22px;
 
-border:none;
-outline:none;
+    border:2px solid #e4d6c7;
 
-background:#f1f1f1;
+    border-right:none;
 
-border-radius:30px 0px 0px 30px;
+    border-radius:40px 0 0 40px;
+
+    outline:none;
+
+    background:#faf8f6;
+
+    font-size:16px;
+
+}
+
+.search-box input:focus{
+
+    border-color:#8b5a2b;
 
 }
 
 .search-box button{
 
-padding:12px 18px;
+    padding:0 28px;
 
-border:none;
+    border:none;
 
-background:#b9804f;
+    background:#8b5a2b;
 
-color:white;
+    color:#fff;
 
-cursor:pointer;
+    font-size:18px;
 
-border-radius:0px 30px 30px 0px;
+    cursor:pointer;
+
+    border-radius:0 40px 40px 0;
+
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:#6f4420;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
 
 }
 
 .nav-links a{
 
-text-decoration:none;
+    text-decoration:none;
 
-margin-left:20px;
+    color:#444;
 
-font-size:17px;
+    font-size:16px;
 
-color:#444;
+    font-weight:600;
 
-font-weight:500;
+    transition:.3s;
 
 }
 
 .nav-links a:hover{
 
-color:#b9804f;
+    color:#8b5a2b;
 
 }
 
-
-/* Hero */
+/* ===========================
+          HERO
+=========================== */
 
 .hero{
 
-padding:60px;
+    width:100%;
 
-text-align:center;
+    height:320px;
 
-background:#1f1a17;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("{% static 'images/banner.jpg' %}");
 
-color:white;
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
 
 }
 
 .hero h1{
 
-font-size:45px;
-margin-bottom:15px;
+    color:#fff;
+
+    font-size:55px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
 
 }
 
 .hero p{
 
-font-size:20px;
+    color:#fff;
+
+    font-size:22px;
 
 }
 
-
-/* Product Section */
+/* ===========================
+      PRODUCT SECTION
+=========================== */
 
 .container{
 
-display:grid;
+    width:95%;
 
-grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
+    margin:60px auto;
 
-gap:30px;
+    display:grid;
 
-padding:50px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
 
 }
 
+/* ===========================
+       PRODUCT CARD
+=========================== */
+
 .card{
 
-background:white;
+    background:#fff;
 
-padding:15px;
+    border-radius:20px;
 
-border-radius:20px;
+    overflow:hidden;
 
-box-shadow:
-0px 5px 15px rgba(0,0,0,.1);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 
-text-align:center;
-
-transition:.4s;
+    transition:.4s;
 
 }
 
 .card:hover{
 
-transform:translateY(-10px);
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 45px rgba(0,0,0,.18);
 
 }
 
 .card img{
 
-width:100%;
-height:250px;
+    width:100%;
 
-object-fit:cover;
+    height:260px;
 
-border-radius:15px;
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.card:hover img{
+
+    transform:scale(1.05);
 
 }
 
 .card h3{
 
-margin:15px 0;
+    padding:18px 20px 8px;
 
-font-size:22px;
+    font-size:24px;
+
+    color:#5a3316;
+
+    min-height:70px;
 
 }
 
 .price{
 
-font-size:25px;
+    color:#17a635;
 
-font-weight:bold;
+    font-size:34px;
 
-color:#1aa426;
+    font-weight:700;
 
-margin-bottom:10px;
+    margin-bottom:12px;
 
 }
 
 .desc{
 
-color:#666;
+    color:#666;
 
-margin-bottom:15px;
+    padding:0 20px;
 
-line-height:25px;
+    line-height:28px;
+
+    min-height:70px;
+
+}
+/* ===========================
+      PRODUCT BUTTONS
+=========================== */
+
+.product-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    padding:20px;
 
 }
 
+.product-buttons a{
+
+    flex:1;
+
+    text-decoration:none;
+
+}
 
 .btn{
 
-border:none;
+    width:100%;
 
-padding:12px;
+    border:none;
 
-width:100%;
+    padding:13px 10px;
 
-margin-top:10px;
+    border-radius:12px;
 
-border-radius:30px;
+    cursor:pointer;
 
-cursor:pointer;
+    font-size:15px;
 
-font-size:15px;
-font-weight:bold;
+    font-weight:600;
 
-color:white;
+    transition:.35s;
+
+    color:#fff;
+
+    box-shadow:0 10px 18px rgba(0,0,0,.08);
 
 }
 
 .detail-btn{
 
-background:#444;
+    background:#2d3436;
+
+}
+
+.detail-btn:hover{
+
+    background:#111;
+
+    transform:translateY(-4px);
 
 }
 
 .cart-btn{
 
-background:#b9804f;
+    background:linear-gradient(135deg,#c68b4d,#8b5a2b);
+
+}
+
+.cart-btn:hover{
+
+    background:linear-gradient(135deg,#8b5a2b,#6b4423);
+
+    transform:translateY(-4px);
 
 }
 
 .wishlist-btn{
 
-background:#ff4d88;
+    background:linear-gradient(135deg,#ff5d8f,#ff2568);
+
+}
+
+.wishlist-btn:hover{
+
+    background:linear-gradient(135deg,#ff2568,#d90452);
+
+    transform:translateY(-4px);
 
 }
 
 .btn:hover{
 
-opacity:.85;
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
 
 }
 
+/* ===========================
+      PRODUCT BADGE
+=========================== */
 
+.card{
 
-@media(max-width:768px){
+    position:relative;
+
+}
+
+.badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:#27ae60;
+
+    color:#fff;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}
+
+.sale{
+
+    background:#e63946;
+
+}
+
+.new{
+
+    background:#2a9d8f;
+
+}
+
+/* ===========================
+      CARD ANIMATION
+=========================== */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:20px;
+
+    border:2px solid transparent;
+
+    transition:.4s;
+
+}
+
+.card:hover::before{
+
+    border-color:#b9804f;
+
+}
+
+/* ===========================
+      FOOTER
+=========================== */
+
+.footer{
+
+    margin-top:70px;
+
+    background:#1c1c1c;
+
+    color:#ddd;
+
+    padding:60px 8% 20px;
+
+}
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:40px;
+
+}
+
+.footer-box h3{
+
+    color:#d4a373;
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.footer-box p{
+
+    line-height:28px;
+
+    color:#bbb;
+
+}
+
+.footer-box a{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:#bbb;
+
+    margin-bottom:10px;
+
+    transition:.3s;
+
+}
+
+.footer-box a:hover{
+
+    color:#d4a373;
+
+    padding-left:8px;
+
+}
+
+.footer hr{
+
+    margin:30px 0;
+
+    border:none;
+
+    height:1px;
+
+    background:#444;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+      SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eee;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#b9804f;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#8b5a2b;
+
+}
+
+/* ===========================
+      MOBILE RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
 
 .header{
 
-flex-direction:column;
-gap:15px;
+padding:20px;
+
+}
+
+.logo{
+
+width:100%;
+
+text-align:center;
+
+margin-bottom:15px;
+
+}
+
+.search-box{
+
+width:100%;
+
+margin-bottom:15px;
 
 }
 
 .search-box input{
 
-width:220px;
+font-size:15px;
+
+}
+
+.nav-links{
+
+width:100%;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.hero{
+
+height:240px;
+
+padding:20px;
 
 }
 
 .hero h1{
 
-font-size:35px;
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.container{
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+}
+
+.product-buttons{
+
+flex-direction:column;
 
 }
 
 }
+
+@media(max-width:600px){
+
+.header{
+
+padding:15px;
+
+}
+
+.logo a{
+
+font-size:30px;
+
+}
+
+.hero{
+
+height:200px;
+
+}
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.card img{
+
+height:220px;
+
+}
+
+.price{
+
+font-size:28px;
+
+}
+
+.card h3{
+
+font-size:22px;
+
+}
+
+}
+
 
 </style>
+
+
 
 </head>
 
@@ -292,81 +734,75 @@ font-size:35px;
 
 <header class="header">
 
-<div class="logo">
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            D Croft Wood
+        </a>
+    </div>
 
-<a href="{% url 'home' %}">
+    <div class="search-box">
 
-D Croft Wood
+        <form method="GET">
 
-</a>
+            <input
+                type="text"
+                name="q"
+                placeholder="Search Premium Furniture..."
+            >
 
-</div>
+            <button type="submit">
+                🔍
+            </button>
 
+        </form>
 
-<div class="search-box">
+    </div>
 
-<form method="GET">
+    <div class="nav-links">
 
-<input
-type="text"
-placeholder="Search Furniture..."
-name="q">
+        <a href="{% url 'home' %}">
+            🏠 Home
+        </a>
 
-<button>
+        <a href="{% url 'shop' %}">
+            🛍 Shop
+        </a>
 
-🔍
+        <a href="{% url 'cart' %}">
+            🛒 Cart
+        </a>
 
-</button>
+        <a href="{% url 'my_orders' %}">
+            📦 Orders
+        </a>
 
-</form>
+        <a href="{% url 'wishlist' %}">
+            ❤️ Wishlist
+        </a>
 
-</div>
-
-
-<div class="nav-links">
-
-<a href="{% url 'home' %}">
-🏠 Home
-</a>
-
-<a href="{% url 'shop' %}">
-🛍 Shop
-</a>
-
-<a href="{% url 'cart' %}">
-🛒 Cart
-</a>
-<a href="{% url 'my_orders' %}">
-📦 Orders
-</a>
-
-
-<a href="{% url 'wishlist' %}">
-❤️ Wishlist
-</a>
-
-</div>
+    </div>
 
 </header>
 
 
-<div class="hero">
+<!-- HERO -->
 
-<h1>
+<section class="hero">
 
-Premium Furniture Collection
+    <div class="hero-content">
 
-</h1>
+        <h1>Premium Furniture Collection</h1>
 
-<p>
+        <p>
+            Discover timeless elegance with handcrafted furniture designed for modern living.
+        </p>
 
-Explore our luxury furniture collection
+    </div>
 
-</p>
-
-</div>
+</section>
 
 
+<!-- PRODUCTS -->
 
 <div class="container">
 
@@ -374,64 +810,113 @@ Explore our luxury furniture collection
 
 <div class="card">
 
-<img src="{{product.image.url}}">
+    <div class="badge new">
+        NEW
+    </div>
 
-<h3>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
 
-{{product.name}}
+    <h3>
+        {{ product.name }}
+    </h3>
 
-</h3>
+    <p class="price">
+        ₹{{ product.price }}
+    </p>
 
-<p class="price">
+    <p class="desc">
+        {{ product.description|truncatewords:12 }}
+    </p>
 
-₹{{product.price}}
+    <div class="product-buttons">
 
-</p>
+        <a href="{% url 'product_detail' product.id %}">
 
-<p class="desc">
+            <button class="btn detail-btn">
+                👁 Details
+            </button>
 
-{{product.description|truncatewords:10}}
+        </a>
 
-</p>
+        <a href="{% url 'add_to_cart' product.id %}">
 
+            <button class="btn cart-btn">
+                🛒 Cart
+            </button>
 
-<a href="{% url 'product_detail' product.id %}">
+        </a>
 
-<button class="btn detail-btn">
+        <a href="{% url 'add_to_wishlist' product.id %}">
 
-View Details
+            <button class="btn wishlist-btn">
+                ❤️ Wish
+            </button>
 
-</button>
+        </a>
 
-</a>
-
-
-<a href="{% url 'add_to_cart' product.id %}">
-
-<button class="btn cart-btn">
-
-🛒 Add To Cart
-
-</button>
-
-</a>
-
-
-<a href="{% url 'add_to_wishlist' product.id %}">
-
-<button class="btn wishlist-btn">
-
-❤️ Wishlist
-
-</button>
-
-</a>
+    </div>
 
 </div>
 
 {% endfor %}
 
 </div>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h3>D Croft Wood</h3>
+
+            <p>
+                Premium handcrafted wooden furniture for modern homes.
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <a href="{% url 'shop' %}">Shop</a>
+
+            <a href="{% url 'cart' %}">Cart</a>
+
+            <a href="{% url 'wishlist' %}">Wishlist</a>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact</h3>
+
+            <p>📍 Lucknow, Uttar Pradesh</p>
+
+            <p>📞 +91 9876543210</p>
+
+            <p>✉ info@dcroftwood.com</p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="copyright">
+
+        © 2026 D Croft Wood | Designed by <b>Mr. Adarsh Pal</b>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>

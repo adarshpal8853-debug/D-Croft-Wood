@@ -17,143 +17,94 @@ body{
 background:#f8f5f2;
 color:#333;
 }
-
-
-
 .header{
-
-position:sticky;
-top:0;
-z-index:1000;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:18px 70px;
-
-background:rgba(255,255,255,.92);
-
-backdrop-filter:blur(15px);
-
-box-shadow:0 8px 25px rgba(0,0,0,.08);
-
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background:#ffffff;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo a{
+    font-size:48px;
+    font-weight:800;
+    color:#6B3E1F;
+    text-decoration:none;
+}
 
-font-size:38px;
-
-font-weight:800;
-
-color:#6b4423;
-
-text-decoration:none;
-
-letter-spacing:1px;
-
+.nav-links{
+    display:flex;
+    gap:40px;
 }
 
 .nav-links a{
-
-text-decoration:none;
-
-margin-left:30px;
-
-font-size:17px;
-
-font-weight:600;
-
-color:#444;
-
-transition:.3s;
-
+    color:#333;
+    text-decoration:none;
+    font-size:19px;
+    font-weight:600;
+    transition:.3s;
 }
 
 .nav-links a:hover{
-
-color:#8B5E3C;
-
+    color:#8B5A2B;
 }
+
 .hero{
+    width:100%;
+    height:720px;
 
-width:100%;
-height:650px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
-background:
-linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
-url("{% static 'images/banner.jpg' %}");
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 30px;
+}
 
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-color:#f7f5f2;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
+.hero-content{
+    color:#fff;
 }
 
 .hero h1{
-
-font-size:72px;
-
-font-weight:700;
-
-margin-bottom:20px;
-
+    font-size:72px;
+    font-weight:800;
+    margin-bottom:20px;
+    text-shadow:2px 2px 10px rgba(0,0,0,.5);
 }
 
 .hero p{
-
-font-size:22px;
-
-width:700px;
-
-line-height:38px;
-
+    max-width:850px;
+    margin:auto;
+    font-size:22px;
+    line-height:38px;
+    text-shadow:2px 2px 10px rgba(0,0,0,.4);
 }
 
 .hero button{
-
-margin-top:40px;
-
-padding:18px 45px;
-
-border:none;
-
-border-radius:50px;
-
-background:#8B5E3C;
-
-color:white;
-
-font-size:18px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.4s;
-
+    margin-top:40px;
+    padding:18px 55px;
+    border:none;
+    border-radius:50px;
+    background:#8B5A2B;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.4s;
 }
 
 .hero button:hover{
-
-background:#6b4423;
-
-transform:translateY(-5px);
-
-box-shadow:0 15px 30px rgba(0,0,0,.25);
-
+    background:#6b4423;
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
-
-
 .about{
 
 padding:90px 12%;
@@ -528,8 +479,7 @@ D Croft Wood
 
 
 <div class="hero-content">
-
-<img src="https://i.ibb.co/sJ95Rkt4/bannner.png" alt="bannner" border="0">
+<img src="https://i.ibb.co/BVNLS7vK/aaaabbbb.png" alt="aaaabbbb" border="0">
 
 
 
