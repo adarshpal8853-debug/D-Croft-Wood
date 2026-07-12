@@ -6,9 +6,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = 'django-insecure-key'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".onrender.com",
+]
 
 # Installed Apps
 INSTALLED_APPS = [
@@ -79,6 +83,10 @@ USE_TZ = True
 
 # Static Files
 STATIC_URL = 'static/'
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Media Files
 MEDIA_URL = '/media/'
