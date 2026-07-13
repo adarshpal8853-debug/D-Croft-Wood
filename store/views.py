@@ -303,6 +303,29 @@ def payment(request):
 
     if request.method == "POST":
 
+        # Agar Buy Now form se aaye
+        if "name" in request.POST:
+
+            request.session["name"] = request.POST.get("name")
+            request.session["phone"] = request.POST.get("phone")
+            request.session["address"] = request.POST.get("address")
+
+            product = request.POST.get("product")
+            price = int(request.POST.get("price"))
+            quantity = int(request.POST.get("quantity"))
+
+            request.session["products"] = f"{product} x {quantity}"
+            request.session["total"] = price * quantity
+
+            return render(
+                request,
+                "payment.html",
+                {
+                    "total": request.session.get("total")
+                }
+            )
+
+        # Payment page se method select hua
         method = request.POST.get("method")
 
         if method == "cod":
@@ -316,16 +339,13 @@ def payment(request):
             )
 
             Cart.objects.all().delete()
-
             request.session.clear()
 
             return redirect("success")
 
-
         elif method == "upi":
 
             return redirect("upi_payment")
-
 
         elif method == "card":
 
@@ -333,7 +353,8 @@ def payment(request):
                 request,
                 "payment.html",
                 {
-                    "message":"Card Payment Coming Soon"
+                    "message": "Card Payment Coming Soon",
+                    "total": request.session.get("total")
                 }
             )
 
@@ -341,7 +362,7 @@ def payment(request):
         request,
         "payment.html",
         {
-            "total":request.session.get("total")
+            "total": request.session.get("total")
         }
     )
 def success(request):
@@ -441,5 +462,16 @@ def upi_payment(request):
         "upi_payment.html",
         {
             "total":request.session.get("total")
+        }
+    )
+def buy_now(request, id):
+
+    product = Product.objects.get(id=id)
+
+    return render(
+        request,
+        "order.html",
+        {
+            "product": product
         }
     )

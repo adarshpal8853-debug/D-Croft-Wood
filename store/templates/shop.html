@@ -140,188 +140,164 @@ font-size:20px;
 
 }
 
-
-
 .container{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
-
-gap:30px;
-
-padding:50px;
-
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:50px;
 }
+
 .cart-link{
-
-position:relative;
-display:inline-block;
-text-decoration:none;
-
+    position:relative;
+    display:inline-block;
+    text-decoration:none;
 }
 
 .cart-count{
-
-position:absolute;
-top:-10px;
-right:-15px;
-
-background:red;
-color:white;
-
-width:22px;
-height:22px;
-
-border-radius:50%;
-
-font-size:12px;
-font-weight:bold;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-border:2px solid white;
-
+    position:absolute;
+    top:-10px;
+    right:-15px;
+    background:red;
+    color:white;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    font-size:12px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid white;
 }
 
 .card{
-
-background:white;
-
-padding:15px;
-
-border-radius:20px;
-
-box-shadow:
-0px 5px 15px rgba(0,0,0,.1);
-
-text-align:center;
-
-transition:.4s;
-
+    position:relative;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.3s;
 }
 
 .card:hover{
-
-transform:translateY(-10px);
-
+    transform:translateY(-8px);
 }
 
 .card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
 
-width:100%;
-height:250px;
-
-object-fit:cover;
-
-border-radius:15px;
-
+.card-content{
+    padding:18px;
+    text-align:center;
 }
 
 .card h3{
-
-margin:15px 0;
-
-font-size:22px;
-
+    font-size:26px;
+    margin:10px 0;
 }
 
 .price{
-
-font-size:25px;
-
-font-weight:bold;
-
-color:#1aa426;
-
-margin-bottom:10px;
-
+    color:#16a34a;
+    font-size:32px;
+    font-weight:bold;
+    margin:10px 0;
 }
 
 .desc{
-
-color:#666;
-
-margin-bottom:15px;
-
-line-height:25px;
-
+    color:#666;
+    line-height:26px;
+    margin-bottom:20px;
 }
 
+/* ---------- Buttons ---------- */
+
+.btn-group{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
 
 .btn{
-
-border:none;
-
-padding:12px;
-
-width:100%;
-
-margin-top:10px;
-
-border-radius:30px;
-
-cursor:pointer;
-
-font-size:15px;
-font-weight:bold;
-
-color:white;
-
-}
-
-.detail-btn{
-
-background:#444;
-
-}
-
-.cart-btn{
-
-background:#b9804f;
-
-}
-
-.wishlist-btn{
-
-background:#ff4d88;
-
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#fff;
+    font-size:15px;
+    font-weight:bold;
+    transition:.3s;
 }
 
 .btn:hover{
-
-opacity:.85;
-
+    transform:translateY(-2px);
+    opacity:.9;
 }
 
+.detail-btn{
+    background:#444;
+}
 
+.cart-btn{
+    background:#b9804f;
+}
+
+.buy-btn{
+    background:#16a34a;
+}
+
+/* ---------- Wishlist ---------- */
+
+.wishlist-icon{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#fff;
+    color:#ff3366;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    transition:.3s;
+}
+
+.wishlist-icon:hover{
+    background:#ff3366;
+    color:white;
+}
+
+/* ---------- Mobile ---------- */
 
 @media(max-width:768px){
 
-.header{
+    .container{
+        padding:20px;
+        gap:20px;
+    }
 
-flex-direction:column;
-gap:15px;
+    .btn-group{
+        grid-template-columns:1fr;
+    }
 
+    .card h3{
+        font-size:22px;
+    }
+
+    .price{
+        font-size:28px;
+    }
+
+    .search-box input{
+        width:220px;
+    }
 }
-
-.search-box input{
-
-width:220px;
-
-}
-
-.hero h1{
-
-font-size:35px;
-
-}
-
-}
-
 </style>
 
 </head>
@@ -415,64 +391,44 @@ Explore our luxury furniture collection
 
 <div class="card">
 
-<img src="{{product.image.url}}">
+    <a href="{% url 'add_to_wishlist' product.id %}" class="wishlist-icon">
+        ❤️
+    </a>
 
-<h3>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
 
-{{product.name}}
+    <div class="card-content">
 
-</h3>
+        <h3>{{ product.name }}</h3>
 
-<p class="price">
+        <p class="price">
+            ₹{{ product.price }}
+        </p>
 
-₹{{product.price}}
+        <p class="desc">
+            {{ product.description|truncatewords:10 }}
+        </p>
 
-</p>
+        <div class="btn-group">
 
-<p class="desc">
+            <a href="{% url 'product_detail' product.id %}" class="btn detail-btn">
+                View
+            </a>
 
-{{product.description|truncatewords:10}}
+            <a href="{% url 'add_to_cart' product.id %}" class="btn cart-btn">
+                Cart
+            </a>
 
-</p>
+            <a href="{% url 'buy_now' product.id %}" class="btn buy-btn">
+                Buy
+            </a>
 
+        </div>
 
-<a href="{% url 'product_detail' product.id %}">
-
-<button class="btn detail-btn">
-
-View Details
-
-</button>
-
-</a>
-
-
-<a href="{% url 'add_to_cart' product.id %}">
-
-<button class="btn cart-btn">
-
-🛒 Add To Cart
-
-</button>
-
-</a>
-
-
-<a href="{% url 'add_to_wishlist' product.id %}">
-
-<button class="btn wishlist-btn">
-
-❤️ Wishlist
-
-</button>
-
-</a>
+    </div>
 
 </div>
 
 {% endfor %}
 
 </div>
-
-</body>
-</html> 

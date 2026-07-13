@@ -37,4 +37,9 @@ urlpatterns = [
     path('myorders/', views.my_orders, name='my_orders'),
 
     path('profile/', views.profile, name='profile'),
+    path(
+    'buy-now/<int:id>/',
+    views.buy_now,
+    name='buy_now'
+),
 ]
