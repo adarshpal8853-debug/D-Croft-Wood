@@ -19,7 +19,7 @@ background:#f7f5f2;
 }
 
 
-/* Header */
+
 
 .header{
 
@@ -45,18 +45,23 @@ font-size:30px;
 font-weight:bold;
 
 color:#6b4e35;
+ 
+
 
 }
 
 .search-box form{
 
+
 display:flex;
+justify-content:flex-end;
+width:100%;
 
 }
 
 .search-box input{
 
-width:300px;
+width:400px;
 
 padding:12px;
 
@@ -82,6 +87,8 @@ color:white;
 cursor:pointer;
 
 border-radius:0px 30px 30px 0px;
+ 
+text-align:center;
 
 }
 
@@ -89,6 +96,7 @@ border-radius:0px 30px 30px 0px;
 
 text-decoration:none;
 
+margin-right:30px;
 margin-left:20px;
 
 font-size:17px;
@@ -106,7 +114,6 @@ color:#b9804f;
 }
 
 
-/* Hero */
 
 .hero{
 
@@ -134,7 +141,6 @@ font-size:20px;
 }
 
 
-/* Product Section */
 
 .container{
 
@@ -146,6 +152,38 @@ repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
 
 padding:50px;
+
+}
+.cart-link{
+
+position:relative;
+display:inline-block;
+text-decoration:none;
+
+}
+
+.cart-count{
+
+position:absolute;
+top:-10px;
+right:-15px;
+
+background:red;
+color:white;
+
+width:22px;
+height:22px;
+
+border-radius:50%;
+
+font-size:12px;
+font-weight:bold;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:2px solid white;
 
 }
 
@@ -303,24 +341,6 @@ D Croft Wood
 </div>
 
 
-<div class="search-box">
-
-<form method="GET">
-
-<input
-type="text"
-placeholder="Search Furniture..."
-name="q">
-
-<button>
-
-🔍
-
-</button>
-
-</form>
-
-</div>
 
 
 <div class="nav-links">
@@ -345,7 +365,27 @@ name="q">
 ❤️ Wishlist
 </a>
 
+</div><br>
+
+<div class="search-box">
+
+<form method="GET">
+
+<input
+type="text"
+placeholder="Search Furniture..."
+name="q">
+
+<button>
+
+🔍
+
+</button>
+
+</form>
+
 </div>
+
 
 </header>
 
