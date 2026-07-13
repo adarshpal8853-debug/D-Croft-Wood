@@ -1,14 +1,13 @@
 from pathlib import Path
 import os
 
-# Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Security
+
 SECRET_KEY = 'django-insecure-key'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -17,7 +16,6 @@ ALLOWED_HOSTS = [
 ]
 
 
-# Installed Apps
 INSTALLED_APPS = [
     'store',
 
@@ -30,7 +28,6 @@ INSTALLED_APPS = [
 ]
 
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
@@ -51,7 +48,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ecommerce.urls'
 
 
-# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -80,7 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 
-# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -89,11 +84,10 @@ DATABASES = {
 }
 
 
-# Password Validation
+
 AUTH_PASSWORD_VALIDATORS = []
 
 
-# Internationalization
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -103,9 +97,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# ===========================
-# Static Files
-# ===========================
 
 STATIC_URL = "/static/"
 
@@ -116,14 +107,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-# ===========================
-# Media Files
-# ===========================
-
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-# Default Primary Key
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
