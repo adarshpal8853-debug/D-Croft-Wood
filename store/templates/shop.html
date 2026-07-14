@@ -335,11 +335,9 @@ D Croft Wood
 <a href="{% url 'cart' %}" class="cart-link">
     🛒 Cart
 
-    {% if cart_count > 0 %}
-        <span class="cart-count">
-            {{ cart_count }}
-        </span>
-    {% endif %}
+    <span class="cart-count" id="cart-count">
+        {{ cart_count }}
+    </span>
 </a>
 <a href="{% url 'my_orders' %}">
 📦 Orders
@@ -424,9 +422,9 @@ Explore our luxury furniture collection
                 View
             </a>
 
-            <a href="{% url 'add_to_cart' product.id %}" class="btn cart-btn">
-                Cart
-            </a>
+           <a href="#" class="btn cart-btn add-cart" data-id="{{ product.id }}">
+            Cart
+        </a>
 
             <a href="{% url 'buy_now' product.id %}" class="btn buy-btn">
                 Buy
@@ -441,3 +439,31 @@ Explore our luxury furniture collection
 {% endfor %}
 
 </div>
+<script>
+    console.log("JavaScript Loaded");
+
+document.querySelectorAll(".add-cart").forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        let productId = this.dataset.id;
+
+        fetch("/add-to-cart/" + productId + "/")
+        .then(response => response.json())
+        .then(data => {
+
+            if(data.success){
+
+                document.getElementById("cart-count").innerHTML = data.cart_count;
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>

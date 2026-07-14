@@ -46,31 +46,30 @@ def product_detail(request,id):
     )
 
 
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
-def add_to_cart(request,id):
+def add_to_cart(request, id):
 
-    product=Product.objects.get(
-        id=id
-    )
+    product = get_object_or_404(Product, id=id)
 
-    item=Cart.objects.filter(
-        product=product
-    ).first()
+    item = Cart.objects.filter(product=product).first()
 
     if item:
-
-        item.quantity+=1
+        item.quantity += 1
         item.save()
-
     else:
-
         Cart.objects.create(
             product=product,
             quantity=1
         )
 
-    return redirect(request.META.get("HTTP_REFERER", "home"))
+    cart_count = Cart.objects.count()
 
+    return JsonResponse({
+        "success": True,
+        "cart_count": cart_count
+    })
 
 
 
@@ -325,7 +324,7 @@ def payment(request):
                 }
             )
 
-        # Payment page se method select hua
+       
         method = request.POST.get("method")
 
         if method == "cod":
@@ -406,14 +405,14 @@ def shop(request):
 
     products = Product.objects.all()
 
-    cart_count = Cart.objects.count()   # 👈 Ye line add karo
+    cart_count = Cart.objects.count()  
 
     return render(
         request,
         "shop.html",
         {
             "products": products,
-            "cart_count": cart_count    # 👈 Ye line add karo
+            "cart_count": cart_count    
         }
     )
 def payment_done(request):
