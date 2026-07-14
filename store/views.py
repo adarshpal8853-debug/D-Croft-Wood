@@ -405,14 +405,22 @@ def shop(request):
 
     products = Product.objects.all()
 
-    cart_count = Cart.objects.count()  
+    query = request.GET.get("q")
+
+    if query:
+        products = products.filter(
+            name__icontains=query
+        )
+
+    cart_count = Cart.objects.count()
 
     return render(
         request,
         "shop.html",
         {
             "products": products,
-            "cart_count": cart_count    
+            "cart_count": cart_count,
+            "query": query
         }
     )
 def payment_done(request):
