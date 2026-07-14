@@ -406,18 +406,14 @@ def shop(request):
 
     products = Product.objects.all()
 
-    query = request.GET.get('q')
-
-    if query:
-        products = products.filter(
-            name__icontains=query
-        )
+    cart_count = Cart.objects.count()   # 👈 Ye line add karo
 
     return render(
         request,
-        'shop.html',
+        "shop.html",
         {
-            'products': products
+            "products": products,
+            "cart_count": cart_count    # 👈 Ye line add karo
         }
     )
 def payment_done(request):
