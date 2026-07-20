@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-
+from django.contrib.auth.decorators import login_required
 from .models import Product
 from .models import Cart
 from .models import Wishlist
 from .models import Order
-
+from .models import Booking
 
 
 def home(request):
@@ -250,6 +250,7 @@ def login_user(request):
 
 
 
+
 def logout_user(request):
 
     logout(request)
@@ -257,6 +258,8 @@ def logout_user(request):
     return redirect(
         'home'
     )
+
+@login_required(login_url="login")
 def checkout(request):
 
     items = Cart.objects.all()
@@ -298,6 +301,7 @@ def checkout(request):
             "total": total
         }
     )
+@login_required(login_url="login")
 def payment(request):
 
     if request.method == "POST":
@@ -371,7 +375,7 @@ def success(request):
         "success.html"
     )
 
-
+@login_required(login_url="login")
 def my_orders(request):
 
     orders = Order.objects.all()
@@ -467,6 +471,7 @@ def upi_payment(request):
             "total":request.session.get("total")
         }
     )
+@login_required(login_url="login")
 def buy_now(request, id):
 
     product = Product.objects.get(id=id)
@@ -478,3 +483,21 @@ def buy_now(request, id):
             "product": product
         }
     )
+@login_required(login_url="login")
+def booking(request):
+
+    if request.method == "POST":
+
+        Booking.objects.create(
+            name=request.POST.get("name"),
+            phone=request.POST.get("phone"),
+            email=request.POST.get("email"),
+            city=request.POST.get("city"),
+            date=request.POST.get("date"),
+            time=request.POST.get("time"),
+            product=request.POST.get("product"),
+            message=request.POST.get("message"),
+           )
+        return redirect("success")
+
+    return render(request, "booking.html")

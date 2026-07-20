@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Book Appointment | D Croft Wood</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f5f2ee;
+}
+
+.container{
+
+width:100%;
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:40px;
+
+}
+
+.booking-box{
+
+width:1000px;
+
+background:white;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+}
+
+/* LEFT */
+
+.left{
+
+background:#6b4e35;
+
+color:white;
+
+padding:50px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.left h1{
+
+font-size:40px;
+margin-bottom:20px;
+
+}
+
+.left p{
+
+font-size:18px;
+line-height:30px;
+
+}
+
+.left img{
+
+width:100%;
+margin-top:30px;
+
+border-radius:15px;
+
+}
+
+/* RIGHT */
+
+.right{
+
+padding:50px;
+
+}
+
+.right h2{
+
+text-align:center;
+
+margin-bottom:30px;
+
+color:#6b4e35;
+
+}
+
+form{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+input,
+textarea{
+
+padding:15px;
+
+font-size:16px;
+
+border:1px solid #ccc;
+
+border-radius:10px;
+
+outline:none;
+
+}
+
+textarea{
+
+resize:none;
+
+}
+
+button{
+
+padding:16px;
+
+background:#8B5A2B;
+
+color:white;
+
+border:none;
+
+font-size:18px;
+
+font-weight:bold;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#6b4423;
+
+}
+
+@media(max-width:900px){
+
+.booking-box{
+
+grid-template-columns:1fr;
+
+}
+
+.left{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="booking-box">
+
+<div class="left">
+
+<h1>D Croft Wood</h1>
+
+<p>
+
+Book your showroom visit today and experience our premium furniture collection in person.
+
+</p>
+
+<img src="https://i.ibb.co/BVNLS7vK/aaaabbbb.png">
+
+</div>
+
+<div class="right">
+
+<h2>Book Appointment</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="name"
+placeholder="Full Name"
+required>
+
+<input
+type="text"
+name="phone"
+placeholder="Phone Number"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email Address"
+required>
+
+<input
+type="text"
+name="city"
+placeholder="City"
+required>
+
+<input
+type="date"
+name="date"
+required>
+
+<input
+type="time"
+name="time"
+required>
+
+<input
+type="text"
+name="product"
+placeholder="Product Interested In">
+
+<textarea
+name="message"
+rows="5"
+placeholder="Additional Message"></textarea>
+
+<button type="submit">
+
+📅 Book Appointment
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
